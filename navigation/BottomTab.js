@@ -1,7 +1,8 @@
 import React from "react";
 import { Icon } from "native-base";
+import { createBottomTabNavigator } from "react-navigation";
 
-import { createBottomTabNavigator, createAppContainer } from "react-navigation";
+// Navigators
 import LolStack from "./LolStack";
 import ProfileStack from "./ProfileStack";
 
@@ -41,6 +42,4 @@ const BottomTab = createBottomTabNavigator(
   }
 );
 
-const AppContainer = createAppContainer(BottomTab);
-
-export default AppContainer;
+export default BottomTab;

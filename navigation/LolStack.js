@@ -1,5 +1,6 @@
 import { createStackNavigator } from "react-navigation";
 
+// Components
 import LolScreen from "../components/Lol";
 
 const LolStack = createStackNavigator(
