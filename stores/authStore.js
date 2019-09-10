@@ -16,7 +16,7 @@ class AuthStore {
       await AsyncStorage.setItem("myToken", token);
       // Set token to Auth header
 
-      axios.defaults.headers.common.Authorization = `JWT ${token}`;
+      axios.defaults.headers.common.Authorization = `Bearer ${token}`;
       // Set current user
       this.user = jwt_decode(token);
     } else {
