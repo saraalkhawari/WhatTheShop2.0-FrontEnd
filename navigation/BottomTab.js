@@ -1,6 +1,6 @@
 import React from "react";
 import { Icon } from "native-base";
-import { createBottomTabNavigator } from "react-navigation";
+import { createBottomTabNavigator } from "react-navigation-tabs";
 
 // Navigators
 import LolStack from "./LolStack";
