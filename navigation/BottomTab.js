@@ -10,7 +10,7 @@ import Login from "../components/Login";
 const BottomTab = createBottomTabNavigator(
   {
     ProfileTab: ProfileStack,
-    LolTab: Login
+    LolTab: LolStack
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
