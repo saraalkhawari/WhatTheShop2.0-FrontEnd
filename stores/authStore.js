@@ -22,11 +22,11 @@ class AuthStore {
     }
   };
 
-  signup = async userData => {
+  signup = async (userData, navigation) => {
     try {
       await instance.post("/api/register/", userData);
       console.log("signed-up");
-      this.login(userData);
+      this.login(userData, navigation);
     } catch (err) {
       console.error(err);
       console.log("something went wrong signing in");

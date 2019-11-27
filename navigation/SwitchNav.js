@@ -1,11 +1,11 @@
 import { createSwitchNavigator } from "react-navigation";
 
-import login from "../stores/authStore/";
-import signup from "../stores/authStore/";
+import Login from "../components/Authentication/Login";
+import Signup from "../components/Authentication/Signup";
 
 const SwitchNav = createSwitchNavigator({
-  Login: login,
-  Signup: signup
+  Signup: Signup,
+  Login: Login
 });
 
 export default SwitchNav;

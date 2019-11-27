@@ -5,12 +5,13 @@ import { createBottomTabNavigator } from "react-navigation-tabs";
 // Navigators
 import LolStack from "./LolStack";
 import ProfileStack from "./ProfileStack";
-import Login from "../components/Login";
+import Login from "../components/Authentication/Login";
 
 const BottomTab = createBottomTabNavigator(
   {
     ProfileTab: ProfileStack,
-    LolTab: LolStack
+    LolTab: LolStack,
+    LoginTab: Login
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
