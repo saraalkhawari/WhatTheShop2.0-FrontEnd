@@ -1,11 +1,7 @@
 import { decorate, observable } from "mobx";
-import axios from "axios";
 import { AsyncStorage } from "react-native";
 import jwt_decode from "jwt-decode";
-
-const instance = axios.create({
-  baseURL: "http://127.0.0.1:8000/"
-});
+import { instance } from "./instance";
 
 class AuthStore {
   user = null;
@@ -18,6 +14,7 @@ class AuthStore {
       instance.defaults.headers.common.Authorization = `Bearer ${token}`;
       // Set current user
       this.user = jwt_decode(token);
+      console.log("USER", this.user);
     } else {
       await AsyncStorage.removeItem("myToken");
       delete instance.defaults.headers.common.Authorization;
@@ -27,7 +24,8 @@ class AuthStore {
 
   signup = async userData => {
     try {
-      const res = await instance.post("/api/register/", userData);
+      await instance.post("/api/register/", userData);
+      console.log("signed-up");
       this.login(userData);
     } catch (err) {
       console.error(err);
@@ -40,6 +38,7 @@ class AuthStore {
       const res = await instance.post("/api/login/", userData);
       const user = res.data;
       this.setUser(user.access);
+      console.log("logged in");
     } catch (err) {
       console.error(err);
       console.log("something went wrong logging in");
