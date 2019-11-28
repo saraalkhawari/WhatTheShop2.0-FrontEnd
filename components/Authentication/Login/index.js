@@ -5,7 +5,7 @@ import { observer } from "mobx-react";
 import { Form, Item, Input, Button, Text } from "native-base";
 
 // Store
-import authStore from "../../stores/authStore";
+import authStore from "../../../stores/authStore";
 
 class Login extends Component {
   state = {
