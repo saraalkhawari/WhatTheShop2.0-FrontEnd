@@ -2,7 +2,7 @@ import { decorate, observable } from "mobx";
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: "http://127.0.0.1:8000"
+  baseURL: "http://192.168.100.11:80"
 });
 
 class CreaturesStore {
@@ -15,6 +15,7 @@ class CreaturesStore {
       const creatures = res.data;
       this.creatures = creatures;
       this.loading = false;
+      console.log("creatures>>", this.creatures);
     } catch (err) {
       console.error(err);
     }
