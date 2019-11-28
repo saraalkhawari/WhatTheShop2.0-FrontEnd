@@ -1,11 +1,19 @@
 import React from "react";
-import { withNavigation } from "react-navigation";
+import { Icon } from "native-base";
 
-export const DummyPage = (
-  <div>
-    <h1>Hello!</h1>
-    <h2>Good to see you here.</h2>
-  </div>
-);
+const Lol = () => {
+  return (
+    <Icon
+      type="Octicons"
+      name="smiley"
+      style={{
+        fontSize: 300,
+        alignSelf: "center",
+        paddingTop: "50%",
+        color: "red"
+      }}
+    />
+  );
+};
 
-export default withNavigation(DummyPage);
+export default Lol;

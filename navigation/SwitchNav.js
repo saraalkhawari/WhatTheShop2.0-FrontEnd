@@ -3,10 +3,12 @@ import { createSwitchNavigator } from "react-navigation";
 import ProfileStack from "../navigation/ProfileStack";
 import Login from "../components/Authentication/Login";
 import Signup from "../components/Authentication/Signup";
+import DummyPage from "../components/Dummy(Test)/DummyPage";
 
 const SwitchNav = createSwitchNavigator({
-  ProfileStack: ProfileStack,
   Signup: Signup,
+  DummyPage: DummyPage,
+  ProfileStack: ProfileStack,
   Login: Login
 });
 
