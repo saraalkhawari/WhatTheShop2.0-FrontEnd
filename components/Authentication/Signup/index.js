@@ -43,6 +43,12 @@ class Signup extends Component {
           <Button full onPress={this.handlePress}>
             <Text>Signup</Text>
           </Button>
+          <Text
+            style={styles.authOther}
+            onPress={() => this.props.navigation.navigate("Login")}
+          >
+            Already a User? Click here to login!
+          </Text>
         </Form>
       </View>
     );
