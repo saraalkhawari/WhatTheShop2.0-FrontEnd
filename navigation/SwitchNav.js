@@ -7,9 +7,9 @@ import DummyPage from "../components/Dummy(Test)/DummyPage";
 
 const SwitchNav = createSwitchNavigator({
   Signup: Signup,
+  Login: Login,
   DummyPage: DummyPage,
-  ProfileStack: ProfileStack,
-  Login: Login
+  ProfileStack: ProfileStack
 });
 
 export default SwitchNav;

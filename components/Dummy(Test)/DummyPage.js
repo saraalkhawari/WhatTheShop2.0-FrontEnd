@@ -1,7 +1,7 @@
 import React from "react";
 import { Icon } from "native-base";
 
-const Lol = () => {
+const DummyPage = () => {
   return (
     <Icon
       type="Octicons"
@@ -16,4 +16,4 @@ const Lol = () => {
   );
 };
 
-export default Lol;
+export default DummyPage;

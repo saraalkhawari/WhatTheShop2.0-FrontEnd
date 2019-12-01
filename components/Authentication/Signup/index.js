@@ -48,4 +48,7 @@ class Signup extends Component {
     );
   }
 }
+Signup.navigationOptions = {
+  title: "Signup"
+};
 export default observer(Signup);
