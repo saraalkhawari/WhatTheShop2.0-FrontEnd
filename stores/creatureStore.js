@@ -1,9 +1,5 @@
 import { decorate, observable } from "mobx";
-import axios from "axios";
-
-const instance = axios.create({
-  baseURL: "http://192.168.100.11:80"
-});
+import { instance } from "./instance";
 
 class CreaturesStore {
   creatures = [];
