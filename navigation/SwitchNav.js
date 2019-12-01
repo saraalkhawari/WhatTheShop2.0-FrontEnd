@@ -4,6 +4,7 @@ import ProfileStack from "../navigation/ProfileStack";
 import Login from "../components/Authentication/Login";
 import Signup from "../components/Authentication/Signup";
 import CreatureList from "../components/CreaturesList/index";
+import DummyPage from "../components/Dummy(Test)/DummyPage";
 
 const SwitchNav = createSwitchNavigator({
   Login: Login,
