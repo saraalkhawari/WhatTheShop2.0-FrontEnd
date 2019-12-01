@@ -5,7 +5,7 @@ const instance = axios.create({
   baseURL: "http://192.168.100.11:80"
 });
 
-class CreaturesStore {
+class creaturesStore {
   creatures = [];
   loading = true;
 
@@ -21,12 +21,12 @@ class CreaturesStore {
     }
   };
 }
-decorate(CreaturesStore, {
+decorate(creaturesStore, {
   creatures: observable,
   loading: observable
 });
 
-const creaturesStore = new CreaturesStore();
+const creaturesStore = new creaturesStore();
 creaturesStore.fetchAllCreatures();
 
 export default creaturesStore;
