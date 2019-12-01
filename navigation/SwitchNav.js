@@ -6,8 +6,8 @@ import Signup from "../components/Authentication/Signup";
 import CreatureList from "../components/CreaturesList/index";
 
 const SwitchNav = createSwitchNavigator({
-  Signup: Signup,
   Login: Login,
+  Signup: Signup,
   CreatureList: CreatureList,
   ProfileStack: ProfileStack
 });
