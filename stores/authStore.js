@@ -41,7 +41,7 @@ class AuthStore {
       const res = await instance.post("/api/login/", userData);
       const user = res.data;
       await this.setUser(user.access);
-      navigation.navigate("CreatureList");
+      navigation.navigate("ListScreen");
       console.log("logged in");
     } catch (err) {
       console.error(err);

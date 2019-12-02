@@ -20,8 +20,7 @@ import {
 import styles from "./styles";
 
 // //List
-// import coffeeshops from "../CoffeeList/list";
-// import CartButton from "../Buttons/CartButton";
+import CartButton from "../Buttons/CartButton";
 
 class CreatureDetail extends Component {
   state = {

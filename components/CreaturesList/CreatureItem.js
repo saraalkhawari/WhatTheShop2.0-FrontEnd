@@ -1,5 +1,5 @@
 import React from "react";
-
+import { withNavigation } from "react-navigation";
 // NativeBase Components
 import {
   Container,
@@ -18,7 +18,7 @@ import {
 // Style
 import styles from "./styles";
 
-const CreatureItem = ({ creature }) => {
+const CreatureItem = ({ creature, navigation }) => {
   const handlePress = () => alert(" Nope ! ");
   return (
     <Content>
@@ -42,4 +42,4 @@ const CreatureItem = ({ creature }) => {
   );
 };
 
-export default CreatureItem;
+export default withNavigation(CreatureItem);

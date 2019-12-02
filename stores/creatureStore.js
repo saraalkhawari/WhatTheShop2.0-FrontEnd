@@ -1,7 +1,7 @@
 import { decorate, observable } from "mobx";
 import { instance } from "./instance";
 
-class creaturesStore {
+class CreaturesStore {
   creatures = [];
   loading = true;
 
@@ -17,12 +17,12 @@ class creaturesStore {
     }
   };
 }
-decorate(creaturesStore, {
+decorate(CreaturesStore, {
   creatures: observable,
   loading: observable
 });
 
-const creaturesStore = new creaturesStore();
+const creaturesStore = new CreaturesStore();
 creaturesStore.fetchAllCreatures();
 
 export default creaturesStore;
