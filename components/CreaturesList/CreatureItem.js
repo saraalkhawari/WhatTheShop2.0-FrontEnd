@@ -21,24 +21,20 @@ import styles from "./styles";
 const CreatureItem = ({ creature, navigation }) => {
   const handlePress = () => alert(" Nope ! ");
   return (
-    <Content>
-      <List>
-        <ListItem button onPress={handlePress}>
-          <Left>
-            <Thumbnail source={{ uri: creature.image }} />
-          </Left>
-          <Body>
-            <Text>{creature.name}</Text>
-            <Text note numberOfLines={1}>
-              {creature.description}
-            </Text>
-          </Body>
-          <Right>
-            <Text>{creature.price}</Text>
-          </Right>
-        </ListItem>
-      </List>
-    </Content>
+    <ListItem thumbnail onPress={handlePress}>
+      <Left>
+        <Thumbnail source={{ uri: creature.image }} />
+      </Left>
+      <Body>
+        <Text>{creature.name}</Text>
+        <Text note numberOfLines={1}>
+          {creature.description}
+        </Text>
+      </Body>
+      <Right>
+        <Text>{creature.price}</Text>
+      </Right>
+    </ListItem>
   );
 };
 
