@@ -6,7 +6,7 @@ import { Text, List, Button } from "native-base";
 // Component
 import CartItem from "./CartItem";
 
-class CoffeeCart extends Component {
+class CreatureCart extends Component {
   state = {
     items: [
       {

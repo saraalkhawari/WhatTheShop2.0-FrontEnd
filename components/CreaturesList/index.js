@@ -9,6 +9,7 @@ import creatureStore from "../../stores/creatureStore";
 
 // Component
 import CreatureItem from "./CreatureItem";
+import CartButton from "../Buttons/CartButton";
 
 const CreatureList = () => {
   if (creatureStore.loading) return <Spinner />;
@@ -23,7 +24,8 @@ const CreatureList = () => {
 };
 
 CreatureList.navigationOptions = {
-  title: "Creature List"
+  title: "Creature List",
+  headerRight: <CartButton />
 };
 
 export default observer(CreatureList);

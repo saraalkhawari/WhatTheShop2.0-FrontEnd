@@ -19,7 +19,12 @@ import {
 import styles from "./styles";
 
 const CreatureItem = ({ creature, navigation }) => {
-  const handlePress = () => alert(" Nope ! ");
+  const handlePress = () =>
+    navigation.navigate("DetailScreen", {
+      creatureID: creature.id,
+      creatureName: creature.name
+    });
+
   return (
     <ListItem thumbnail onPress={handlePress}>
       <Left>

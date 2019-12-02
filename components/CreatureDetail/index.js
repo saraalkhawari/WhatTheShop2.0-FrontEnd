@@ -22,9 +22,11 @@ import styles from "./styles";
 // //List
 import CartButton from "../Buttons/CartButton";
 
+// //Stores
+import creaturesStore from "../../stores/creatureStore";
+
 class CreatureDetail extends Component {
   state = {
-    name: "C",
     quantity: 1
   };
 
@@ -34,10 +36,18 @@ class CreatureDetail extends Component {
     });
 
   render() {
-    const creatureID = this.props.navigation.getParam("creatureID");
-    const creatureshop = creatureshops.find(
-      creatureshop => creatureID === creatureshop.id
-    );
+    const creature = {
+      name: "Pikachu",
+      origin: "WorldWide",
+      description: "Mshary's secret pet",
+      wig: "yellow",
+      price: "10.000",
+      image: "http://127.0.0.1:8000/media/media/Pikachu_.png"
+    };
+    // const creatureID = this.props.navigation.getParam("creatureID");
+    // const creature = creaturesStore.creatures.find(
+    //   creature => creatureID === creature.id
+    // );
     return (
       <Container>
         <Content>
@@ -45,30 +55,16 @@ class CreatureDetail extends Component {
             <CardItem>
               <Left>
                 <Text style={styles.text}>
-                  {creatureshop.name + "\n"}
-                  <Text note>{creatureshop.location}</Text>
+                  {creature.name + "\n"}
+                  <Text note>{creature.origin}</Text>
                 </Text>
               </Left>
               <Body />
               <Right>
-                <Thumbnail bordered source={creatureshop.img} />
+                <Thumbnail bordered source={creature.image} />
               </Right>
             </CardItem>
-            <CardItem>
-              <Left>
-                <Picker
-                  note
-                  mode="dropdown"
-                  style={styles.picker}
-                  onValueChange={this.changeCreature}
-                  placeholder="Choose Creature"
-                >
-                  <Picker.Item label="C1" value="C1" />
-                  <Picker.Item label="C2" value="C2" />
-                  <Picker.Item label="C3" value="C3" />
-                </Picker>
-              </Left>
-            </CardItem>
+            {/*             
             <CardItem>
               <Body style={styles.numericInput}>
                 <NumericInput
@@ -83,7 +79,7 @@ class CreatureDetail extends Component {
                   <Text>Add</Text>
                 </Button>
               </Right>
-            </CardItem>
+            </CardItem> */}
           </Card>
         </Content>
       </Container>
@@ -92,7 +88,7 @@ class CreatureDetail extends Component {
 }
 
 CreatureDetail.navigationOptions = ({ navigation }) => ({
-  title: navigation.getParam("creatureshopName"),
+  title: navigation.getParam("creatureName"),
   headerRight: <CartButton />
 });
 
