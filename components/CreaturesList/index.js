@@ -2,7 +2,7 @@ import React from "react";
 import { observer } from "mobx-react";
 
 // NativeBase Components
-import { Content } from "native-base";
+import { Content, List } from "native-base";
 
 // Store
 import CreatureStore from "../../stores/creatureStore";
@@ -14,7 +14,11 @@ const CreatureList = () => {
   const creaturesList = CreatureStore.creatures.map(creature => (
     <CreatureItem creature={creature} key={creature.name} />
   ));
-  return <Content>{creaturesList}</Content>;
+  return (
+    <Content>
+      <List>{creaturesList}</List>
+    </Content>
+  );
 };
 
 CreatureList.navigationOptions = {
