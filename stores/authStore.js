@@ -3,9 +3,6 @@ import { AsyncStorage } from "react-native";
 import jwt_decode from "jwt-decode";
 import { instance } from "./instance";
 
-//for frontend testing - delete later
-import axios from "axios";
-
 class AuthStore {
   user = null;
 
@@ -17,17 +14,16 @@ class AuthStore {
       instance.defaults.headers.common.Authorization = `Bearer ${token}`;
       // Set current user
       this.user = jwt_decode(token);
-      console.log("USER", this.user);
     } else {
-      await AsyncStorage.removeItem("myToken");
       delete instance.defaults.headers.common.Authorization;
+      await AsyncStorage.removeItem("myToken");
       this.user = null;
     }
   };
 
   signup = async (userData, navigation) => {
     try {
-      await instance.post("/api/register/", userData);
+      await instance.post("register/", userData);
       console.log("signed-up");
       this.login(userData, navigation);
     } catch (err) {
@@ -38,7 +34,8 @@ class AuthStore {
 
   login = async (userData, navigation) => {
     try {
-      const res = await instance.post("/api/login/", userData);
+      console.log("USER", userData);
+      const res = await instance.post("login/", userData);
       const user = res.data;
       await this.setUser(user.access);
       navigation.navigate("ListScreen");
@@ -49,8 +46,9 @@ class AuthStore {
     }
   };
 
-  logout = () => {
+  logout = navigation => {
     this.setUser();
+    navigation.navigate("Login");
   };
 
   checkForToken = async () => {
