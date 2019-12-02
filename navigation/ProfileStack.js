@@ -6,11 +6,11 @@ import LoginScreen from "../components/Authentication/Login";
 
 const ProfileStack = createStackNavigator(
   {
-    Profile: ProfileScreen,
-    Login: LoginScreen
+    Login: LoginScreen,
+    Profile: ProfileScreen
   },
   {
-    initialRouteName: "Profile",
+    initialRouteName: "Login",
     defaultNavigationOptions: {
       title: "WhatTheShop"
     }

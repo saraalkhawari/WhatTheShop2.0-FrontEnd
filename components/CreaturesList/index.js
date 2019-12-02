@@ -2,16 +2,17 @@ import React from "react";
 import { observer } from "mobx-react";
 
 // NativeBase Components
-import { Content, List } from "native-base";
+import { List, Content, Spinner } from "native-base";
 
 // Store
-import CreatureStore from "../../stores/creatureStore";
+import creatureStore from "../../stores/creatureStore";
 
 // Component
 import CreatureItem from "./CreatureItem";
 
 const CreatureList = () => {
-  const creaturesList = CreatureStore.creatures.map(creature => (
+  if (creatureStore.loading) return <Spinner />;
+  const creaturesList = creatureStore.creatures.map(creature => (
     <CreatureItem creature={creature} key={creature.name} />
   ));
   return (

@@ -3,6 +3,9 @@ import { AsyncStorage } from "react-native";
 import jwt_decode from "jwt-decode";
 import { instance } from "./instance";
 
+//for frontend testing - delete later
+import axios from "axios";
+
 class AuthStore {
   user = null;
 
@@ -33,11 +36,12 @@ class AuthStore {
     }
   };
 
-  login = async userData => {
+  login = async (userData, navigation) => {
     try {
       const res = await instance.post("/api/login/", userData);
       const user = res.data;
-      this.setUser(user.access);
+      await this.setUser(user.access);
+      navigation.navigate("ListScreen");
       console.log("logged in");
     } catch (err) {
       console.error(err);
