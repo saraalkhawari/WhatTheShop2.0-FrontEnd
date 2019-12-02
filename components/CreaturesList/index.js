@@ -2,10 +2,11 @@ import React from "react";
 import { observer } from "mobx-react";
 
 // NativeBase Components
-import { List, Content, Spinner } from "native-base";
+import { List, Content, Spinner, Button, Text } from "native-base";
 
 // Store
 import creatureStore from "../../stores/creatureStore";
+import authStore from "../../stores/authStore";
 
 // Component
 import CreatureItem from "./CreatureItem";
@@ -18,6 +19,9 @@ const CreatureList = () => {
   return (
     <Content>
       <List>{creaturesList}</List>
+      <Button danger onPress={authStore.logout}>
+        <Text>Logout</Text>
+      </Button>
     </Content>
   );
 };
