@@ -1,5 +1,6 @@
 import { decorate, observable } from "mobx";
 import { instance } from "./instance";
+import data from "./data";
 
 class CreaturesStore {
   creatures = [];

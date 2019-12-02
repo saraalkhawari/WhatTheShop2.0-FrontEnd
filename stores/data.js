@@ -40,3 +40,5 @@ const data = [
     image: "http://127.0.0.1:8000/media/media/Pikachu_.png"
   }
 ];
+
+export default data;
