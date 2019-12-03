@@ -1,13 +1,15 @@
 import { createStackNavigator } from "react-navigation-stack";
 
 import CreaturesList from "../components/CreaturesList";
+import CreatureDetail from "../components/CreatureDetail";
 
 const StackNav = createStackNavigator(
   {
-    ListScreen: CreaturesList
+    ListScreen: CreaturesList,
+    DetailScreen: CreatureDetail
   },
   {
-    initialRouteName: "ListScreen"
+    initialRouteName: "DetailScreen"
   }
 );
 

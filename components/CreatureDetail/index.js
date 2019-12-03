@@ -1,87 +1,52 @@
 import React, { Component } from "react";
-import NumericInput from "react-native-numeric-input";
-
-// NativeBase Components
+import { Image } from "react-native";
 import {
-  Body,
-  Button,
-  Card,
-  CardItem,
   Container,
   Content,
-  Thumbnail,
+  Card,
+  CardItem,
+  Text,
+  Title,
+  Button,
+  Icon,
   Left,
-  Picker,
-  Right,
-  Text
+  Body,
+  Right
 } from "native-base";
 
-// Style
-import styles from "./styles";
+//store
+import creaturesStore from "../../stores/creatureStore";
 
-// //List
-import CartButton from "../Buttons/CartButton";
-
-class CreatureDetail extends Component {
-  state = {
-    name: "C",
-    quantity: 1
-  };
-
-  changeName = value =>
-    this.setState({
-      name: value
-    });
-
+export default class CardImageExample extends Component {
   render() {
-    const creatureID = this.props.navigation.getParam("creatureID");
-    const creatureshop = creatureshops.find(
-      creatureshop => creatureID === creatureshop.id
-    );
+    const creature = {
+      name: "Pikachu",
+      origion: "WorldWide",
+      decreption: "Mshary's secret pet",
+      wig: "yellow",
+      price: "10.000",
+      image:
+        "https://i.pinimg.com/originals/f5/1d/08/f51d08be05919290355ac004cdd5c2d6.png"
+    };
     return (
       <Container>
         <Content>
-          <Card transparent style={styles.card}>
-            <CardItem>
-              <Left>
-                <Text style={styles.text}>
-                  {creatureshop.name + "\n"}
-                  <Text note>{creatureshop.location}</Text>
-                </Text>
-              </Left>
-              <Body />
-              <Right>
-                <Thumbnail bordered source={creatureshop.img} />
-              </Right>
+          <Card>
+            <CardItem cardBody>
+              <Image
+                source={{
+                  uri: creature.image
+                }}
+                style={{ height: 400, width: null, flex: 1 }}
+              />
             </CardItem>
             <CardItem>
               <Left>
-                <Picker
-                  note
-                  mode="dropdown"
-                  style={styles.picker}
-                  onValueChange={this.changeCreature}
-                  placeholder="Choose Creature"
-                >
-                  <Picker.Item label="C1" value="C1" />
-                  <Picker.Item label="C2" value="C2" />
-                  <Picker.Item label="C3" value="C3" />
-                </Picker>
+                <Title>{creature.name}</Title>
+                <Text note>{creature.origin}</Text>
               </Left>
-            </CardItem>
-            <CardItem>
-              <Body style={styles.numericInput}>
-                <NumericInput
-                  value={this.state.value}
-                  onChange={quantity => this.setState({ quantity })}
-                  initValue={1}
-                />
-              </Body>
-
               <Right>
-                <Button full style={styles.addButton}>
-                  <Text>Add</Text>
-                </Button>
+                <Text>11h ago</Text>
               </Right>
             </CardItem>
           </Card>
@@ -90,10 +55,3 @@ class CreatureDetail extends Component {
     );
   }
 }
-
-CreatureDetail.navigationOptions = ({ navigation }) => ({
-  title: navigation.getParam("creatureshopName"),
-  headerRight: <CartButton />
-});
-
-export default CreatureDetail;
