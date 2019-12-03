@@ -7,8 +7,9 @@ class CreaturesStore {
   loading = true;
 
   fetchAllCreatures = async () => {
+    console.log("HELLLOOO");
     try {
-      const res = await instance.get("/api/");
+      const res = await instance.get("");
       const creatures = res.data;
       this.creatures = creatures;
       this.loading = false;
