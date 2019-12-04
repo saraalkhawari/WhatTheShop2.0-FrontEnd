@@ -19,21 +19,28 @@ import {
 // Style
 import styles from "./styles";
 
-// //List
+// Components
 import CartButton from "../Buttons/CartButton";
 
 // //Stores
 import creaturesStore from "../../stores/creatureStore";
+import cartStore from "../../stores/cartStore";
 
 class CreatureDetail extends Component {
   state = {
     quantity: 1
   };
 
-  // changeName = value =>
+  // changeWig = value =>
   //   this.setState({
-  //     name: value
+  //     wig: value
   //   });
+
+  // changeWig = value => this.setState({ wig: value });
+
+  changeQuantity = value => this.setState({ quantity: value });
+
+  handleAdd = () => cartStore.addItemToCart(this.state);
 
   render() {
     // const creature = {
@@ -61,7 +68,7 @@ class CreatureDetail extends Component {
               </Left>
               <Body />
               <Right>
-                <Thumbnail bordered source={creature.image} />
+                <Thumbnail source={{ uri: creature.image }} />
               </Right>
             </CardItem>
 
@@ -75,7 +82,7 @@ class CreatureDetail extends Component {
               </Body>
 
               <Right>
-                <Button full style={styles.addButton}>
+                <Button full onPress={this.handleAdd}>
                   <Text>Add</Text>
                 </Button>
               </Right>
