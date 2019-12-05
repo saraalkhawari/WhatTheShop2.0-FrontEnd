@@ -6,6 +6,9 @@ import { Text, Left, Body, Right, Button, ListItem, Icon } from "native-base";
 // Style
 import styles from "./styles";
 
+// Store
+import cartStore from "../../stores/cartStore";
+
 const CartItem = ({ item }) => {
   return (
     <ListItem style={styles.listStyle}>
@@ -16,7 +19,7 @@ const CartItem = ({ item }) => {
         <Text style={styles.quantity}>{item.quantity}</Text>
       </Body>
       <Right>
-        <Button transparent>
+        <Button transparent onPress={() => cartStore.removeItemFromCart(item)}>
           <Icon name="trash" style={styles.removeItem} />
         </Button>
       </Right>

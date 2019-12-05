@@ -21,25 +21,41 @@ import creaturesStore from "../../stores/creatureStore";
 // Style
 import styles from "./styles";
 
-// //List
+// Components
 import CartButton from "../Buttons/CartButton";
 
 // //Stores
 import creaturesStore from "../../stores/creatureStore";
+import cartStore from "../../stores/cartStore";
 
 class CreatureDetail extends Component {
   state = {
+    name: this.props.navigation.getParam("creatureName"),
     quantity: 1
   };
 
+<<<<<<< HEAD
   changeName = value =>
     this.setState({
       name: value
     });
 >>>>>>> 5c5aa118cf0d34a55c4934ec05d406304ca2083f
+=======
+  // changeWig = value =>
+  //   this.setState({
+  //     wig: value
+  //   });
+
+  // changeWig = value => this.setState({ wig: value });
+
+  changeQuantity = value => this.setState({ quantity: value });
+
+  handleAdd = () => cartStore.addItemToCart(this.state);
+>>>>>>> 8596fdc334afae33f2a19734d1d50133a4e1d692
 
 export default class CardImageExample extends Component {
   render() {
+<<<<<<< HEAD
     const creature = {
       name: "Pikachu",
 <<<<<<< HEAD
@@ -78,6 +94,12 @@ export default class CardImageExample extends Component {
     // const creature = creaturesStore.creatures.find(
     //   creature => creatureID === creature.id
     // );
+=======
+    const creatureID = this.props.navigation.getParam("creatureID");
+    const creature = creaturesStore.creatures.find(
+      creature => creatureID === creature.id
+    );
+>>>>>>> 8596fdc334afae33f2a19734d1d50133a4e1d692
     return (
       <Container>
         <Content>
@@ -91,10 +113,10 @@ export default class CardImageExample extends Component {
               </Left>
               <Body />
               <Right>
-                <Thumbnail bordered source={creature.image} />
+                <Thumbnail source={{ uri: creature.image }} />
               </Right>
             </CardItem>
-            {/*             
+
             <CardItem>
               <Body style={styles.numericInput}>
                 <NumericInput
@@ -106,9 +128,15 @@ export default class CardImageExample extends Component {
 
 >>>>>>> 5c5aa118cf0d34a55c4934ec05d406304ca2083f
               <Right>
+<<<<<<< HEAD
                 <Text>11h ago</Text>
+=======
+                <Button full onPress={this.handleAdd}>
+                  <Text>Add</Text>
+                </Button>
+>>>>>>> 8596fdc334afae33f2a19734d1d50133a4e1d692
               </Right>
-            </CardItem> */}
+            </CardItem>
           </Card>
         </Content>
       </Container>
