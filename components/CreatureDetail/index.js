@@ -28,6 +28,7 @@ import cartStore from "../../stores/cartStore";
 
 class CreatureDetail extends Component {
   state = {
+    name: this.props.navigation.getParam("creatureName"),
     quantity: 1
   };
 
@@ -43,14 +44,6 @@ class CreatureDetail extends Component {
   handleAdd = () => cartStore.addItemToCart(this.state);
 
   render() {
-    // const creature = {
-    //   name: "Pikachu",
-    //   origin: "WorldWide",
-    //   description: "Mshary's secret pet",
-    //   wig: "yellow",
-    //   price: "10.000",
-    //   image: "http://127.0.0.1:8000/media/media/Pikachu_.png"
-    // };
     const creatureID = this.props.navigation.getParam("creatureID");
     const creature = creaturesStore.creatures.find(
       creature => creatureID === creature.id
