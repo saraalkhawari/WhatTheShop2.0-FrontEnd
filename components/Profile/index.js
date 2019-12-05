@@ -17,4 +17,10 @@ const Profile = () => {
     </Card>
   );
 };
+
+Profile.navigationOptions = {
+  title: "Profile",
+  headerRight: <CartButton />,
+  headerLeft: <LogButton />
+};
 export default Profile;
