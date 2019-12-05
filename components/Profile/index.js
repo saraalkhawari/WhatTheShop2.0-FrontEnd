@@ -3,6 +3,9 @@ import React from "react";
 // NativeBase Components
 import { Card, CardItem, Text, Button } from "native-base";
 
+//Store
+import authStore from "../../stores/authStore";
+
 //Buttons
 import CartButton from "../Buttons/CartButton";
 import LogButton from "../Buttons/LogButton";
@@ -10,13 +13,13 @@ import LogButton from "../Buttons/LogButton";
 const Profile = () => {
   return (
     <Card>
-      <CardItem></CardItem>
+      {authStore.user}
+      {console.log("profile")}
     </Card>
   );
 };
 
 Profile.navigationOptions = {
-  title: "Profile",
   headerRight: <CartButton />,
   headerLeft: <LogButton />
 };
