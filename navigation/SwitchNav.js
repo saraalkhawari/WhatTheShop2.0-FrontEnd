@@ -5,8 +5,8 @@ import Signup from "../components/Authentication/Signup";
 import StackNav from "./StackNav";
 
 const SwitchNav = createSwitchNavigator({
-  Login: Login,
   StackNav: StackNav,
+  Login: Login,
   Signup: Signup
 });
 
