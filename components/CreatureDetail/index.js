@@ -19,8 +19,9 @@ import {
 // Style
 import styles from "./styles";
 
-// Components
+// Buttons
 import CartButton from "../Buttons/CartButton";
+import LogButton from "../Buttons/LogButton";
 
 // //Stores
 import creaturesStore from "../../stores/creatureStore";
@@ -89,7 +90,8 @@ class CreatureDetail extends Component {
 
 CreatureDetail.navigationOptions = ({ navigation }) => ({
   title: navigation.getParam("creatureName"),
-  headerRight: <CartButton />
+  headerRight: <CartButton />,
+  headerLeft: <LogButton />
 });
 
 export default CreatureDetail;

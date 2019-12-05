@@ -7,6 +7,9 @@ import { Text, List, Button } from "native-base";
 // Component
 import CartItem from "./CartItem";
 
+//Buttons
+import LogButton from "../Buttons/LogButton";
+
 // Stores
 import cartStore from "../../stores/cartStore";
 
@@ -26,7 +29,8 @@ const CreatureCart = () => {
 };
 
 CreatureCart.navigationOptions = {
-  title: "Cart"
+  title: "Cart",
+  headerLeft: <LogButton />
 };
 
 export default observer(CreatureCart);
