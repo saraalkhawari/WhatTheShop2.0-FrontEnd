@@ -7,10 +7,10 @@ import { Button, Text } from "native-base";
 // Stores
 import authStore from "../../stores/authStore";
 
-const Log = () => {
-  if (authStore.user) {
+const Log = ({ navigation }) => {
+  if (authStore.user === null) {
     return (
-      <Button Success onPress={authStore.login}>
+      <Button Success onPress={() => navigation.navigate("Login")}>
         <Text>Login</Text>
       </Button>
     );
