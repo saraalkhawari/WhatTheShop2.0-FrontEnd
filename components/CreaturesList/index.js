@@ -23,9 +23,6 @@ const CreatureList = () => {
   return (
     <Content>
       <List>{creaturesList}</List>
-      <Button danger onPress={authStore.logout}>
-        <Text>Logout</Text>
-      </Button>
     </Content>
   );
 };
