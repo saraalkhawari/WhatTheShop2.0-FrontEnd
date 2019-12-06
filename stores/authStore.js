@@ -46,9 +46,8 @@ class AuthStore {
     }
   };
 
-  logout = navigation => {
+  logout = () => {
     this.setUser();
-    navigation.navigate("Login");
   };
 
   checkForToken = async () => {

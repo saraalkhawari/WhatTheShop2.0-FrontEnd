@@ -3,11 +3,13 @@ import { createSwitchNavigator } from "react-navigation";
 import Login from "../components/Authentication/Login";
 import Signup from "../components/Authentication/Signup";
 import StackNav from "./StackNav";
+import Profile from "../components/Profile/index";
 
 const SwitchNav = createSwitchNavigator({
-  Login: Login,
   StackNav: StackNav,
-  Signup: Signup
+  Login: Login,
+  Signup: Signup,
+  Profile: Profile
 });
 
 export default SwitchNav;
