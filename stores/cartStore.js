@@ -13,6 +13,13 @@ class CartStore {
     this.items = this.items.filter(_item => _item !== item);
   };
 
+  //   "cart_items": [
+  //     {
+  //         "creature": 1,
+  //         "quantity": 66
+  //     }
+  // ]
+
   checkoutCart = () => {
     this.items = [];
     alert("I'm a cute message");

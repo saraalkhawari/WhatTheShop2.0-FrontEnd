@@ -11,7 +11,7 @@ const StackNav = createStackNavigator(
     CartScreen: CreatureCart
   },
   {
-    initialRouteName: "DetailScreen"
+    initialRouteName: "ListScreen"
   }
 );
 
