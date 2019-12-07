@@ -18,6 +18,10 @@ import {
 // Style
 import styles from "./styles";
 
+// //Stores
+import creaturesStore from "../../stores/creatureStore";
+import cartStore from "../../stores/cartStore";
+
 const CreatureItem = ({ creature, navigation }) => {
   const handlePress = () =>
     navigation.navigate("DetailScreen", {
@@ -36,6 +40,14 @@ const CreatureItem = ({ creature, navigation }) => {
           {creature.description}
         </Text>
       </Body>
+      <Button
+        full
+        onPress={() =>
+          this.props.navigation(cartStore.addItemToCart("creatureName"))
+        }
+      >
+        <Text>Add</Text>
+      </Button>
       <Right>
         <Text>{creature.price}</Text>
       </Right>
