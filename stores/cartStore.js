@@ -39,7 +39,7 @@ class CartStore {
 
   get quantity() {
     let quantity = 0;
-    this.items.forEach(item => (quantity += item.quantity));
+
     return quantity;
   }
 }

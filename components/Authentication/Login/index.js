@@ -39,7 +39,7 @@ class Login extends Component {
               onChangeText={password => this.setState({ password })}
             />
           </Item>
-          <Button full onPress={this.handlePress}>
+          <Button rounded dark onPress={this.handlePress}>
             <Text>Login</Text>
           </Button>
           <Text

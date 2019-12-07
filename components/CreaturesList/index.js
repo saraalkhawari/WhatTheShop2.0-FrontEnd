@@ -22,10 +22,12 @@ const CreatureList = () => {
     <CreatureItem creature={creature} key={creature.name} />
   ));
   return (
-    <Content>
-      <List>{creaturesList}</List>
-      <Profile />
-    </Content>
+    <>
+      <Content>
+        <List>{creaturesList}</List>
+        <Profile />
+      </Content>
+    </>
   );
 };
 
