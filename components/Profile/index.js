@@ -11,12 +11,7 @@ import CartButton from "../Buttons/CartButton";
 import LogButton from "../Buttons/LogButton";
 
 const Profile = () => {
-  return (
-    <Card>
-      {authStore.user}
-      {console.log("profile")}
-    </Card>
-  );
+  return <Card>{authStore.user}</Card>;
 };
 
 Profile.navigationOptions = {
