@@ -21,13 +21,18 @@ import styles from "./styles";
 // //Stores
 import creaturesStore from "../../stores/creatureStore";
 import cartStore from "../../stores/cartStore";
+import CreatureDetail from "../CreatureDetail";
 
 const CreatureItem = ({ creature, navigation }) => {
+  // item = [];
   const handlePress = () =>
     navigation.navigate("DetailScreen", {
       creatureID: creature.id,
       creatureName: creature.name
     });
+
+  // handleAdd = () =>
+  // cartStore.addItemToCart((name: creature.name), (quantity: 1));
 
   return (
     <ListItem thumbnail onPress={handlePress}>
@@ -40,14 +45,9 @@ const CreatureItem = ({ creature, navigation }) => {
           {creature.description}
         </Text>
       </Body>
-      <Button
-        full
-        onPress={() =>
-          this.props.navigation(cartStore.addItemToCart("creatureName"))
-        }
-      >
+      {/* <Button full onPress={this.handleAdd}>
         <Text>Add</Text>
-      </Button>
+      </Button> */}
       <Right>
         <Text>{creature.price}</Text>
       </Right>
