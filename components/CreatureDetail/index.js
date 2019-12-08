@@ -42,7 +42,9 @@ class CreatureDetail extends Component {
 
   changeQuantity = value => this.setState({ quantity: value });
 
-  handleAdd = () => cartStore.addItemToCart(this.state);
+  handleAdd = () => {
+    cartStore.addItemToCart(this.state);
+  };
 
   render() {
     const creatureID = this.props.navigation.getParam("creatureID");
@@ -81,6 +83,7 @@ class CreatureDetail extends Component {
                 </Button>
               </Right>
             </CardItem>
+            <LogButton />
           </Card>
         </Content>
       </Container>
@@ -90,8 +93,7 @@ class CreatureDetail extends Component {
 
 CreatureDetail.navigationOptions = ({ navigation }) => ({
   title: navigation.getParam("creatureName"),
-  headerRight: <CartButton />,
-  headerLeft: <LogButton />
+  headerRight: <CartButton />
 });
 
 export default CreatureDetail;

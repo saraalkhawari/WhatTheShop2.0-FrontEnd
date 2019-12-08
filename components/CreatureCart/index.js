@@ -46,13 +46,13 @@ const CreatureCart = () => {
       <Button full danger onPress={handleCheckout}>
         <Text>Checkout</Text>
       </Button>
+      <LogButton />
     </List>
   );
 };
 
 CreatureCart.navigationOptions = {
-  title: "Cart",
-  headerLeft: <LogButton />
+  title: "Cart"
 };
 
 export default observer(CreatureCart);
