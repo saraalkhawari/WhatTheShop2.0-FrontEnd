@@ -1,4 +1,5 @@
 import React from "react";
+import { observer } from "mobx-react";
 
 // NativeBase Components
 import { Container, CardItem, Text } from "native-base";
@@ -30,4 +31,4 @@ const Profile = () => {
 Profile.navigationOptions = {
   headerRight: <CartButton />
 };
-export default Profile;
+export default observer(Profile);

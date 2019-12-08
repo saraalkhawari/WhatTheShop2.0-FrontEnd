@@ -1,5 +1,5 @@
 import { computed, decorate, observable } from "mobx";
-
+import { instance } from "./instance";
 import { AsyncStorage } from "react-native";
 
 class CartStore {
@@ -10,8 +10,6 @@ class CartStore {
     if (itemExist) itemExist.quantity += item.quantity;
     else this.items.push(item);
     await AsyncStorage.setItem("cart", JSON.stringify(this.items));
-    const retrievedItems = await AsyncStorage.getItem("cart");
-    console.log("Async Storage...>>", retrievedItems);
   };
 
   retrieveItems = async () => {
@@ -30,21 +28,39 @@ class CartStore {
     await AsyncStorage.setItem("cart", JSON.stringify(this.items));
   };
 
+  // Backend format >>>>>>>>
   //   "cart_items": [
   //     {
   //         "creature": 1,
   //         "quantity": 66
   //     }
   // ]
+  //>>>>>>>>>>>>>>>>>>>>>>>>
 
-  checkoutCart = () => {
-    this.items = [];
-    alert("I'm a cute message");
+  checkoutCart = async () => {
+    try {
+      if (this.items.length > 0) {
+        let cart = [];
+        this.items.forEach(obj =>
+          cart.push({ creature: obj.creature, quantity: obj.quantity })
+        );
+
+        let obj = { cart_items: cart };
+        console.log("cart >>", obj);
+        await instance.post("checkout/", obj);
+        this.items = [];
+        await AsyncStorage.setItem("cart", JSON.stringify(this.items));
+        alert("the cart is in the BackEnd FINALLLLLY !!!!");
+      } else alert("There's No ITEMS !!!");
+    } catch (err) {
+      console.error(err);
+      console.log("something went wrong");
+    }
   };
 
   get quantity() {
     let quantity = 0;
-    this.items.forEach(item => (quantity += item.quatity));
+    this.items.forEach(item => (quantity += item.quantity));
     return quantity;
   }
 }

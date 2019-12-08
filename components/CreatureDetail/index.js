@@ -30,7 +30,8 @@ import cartStore from "../../stores/cartStore";
 class CreatureDetail extends Component {
   state = {
     name: this.props.navigation.getParam("creatureName"),
-    quantity: 1
+    quantity: 1,
+    creature: this.props.navigation.getParam("creatureID")
   };
 
   // changeWig = value =>

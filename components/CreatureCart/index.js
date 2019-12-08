@@ -20,23 +20,19 @@ const CreatureCart = () => {
   ));
   const handleCheckout = () => {
     if (authStore.user === null) {
-      return Alert.alert(
-        "HALT!",
-        "You will need to login to proceed. login now?",
-        [
-          {
-            text: "OK",
-            onPress: ({ navigation }) => navigation.navigate("Login")
-          },
-          {
-            text: "Cancel",
-            onPress: () => console.log("Cancel Pressed"),
-            style: "cancel"
-          }
-        ]
-      );
+      return alert("HALT!", "You will need to login to proceed. login now?", [
+        {
+          text: "OK",
+          onPress: ({ navigation }) => navigation.navigate("Login")
+        },
+        {
+          text: "Cancel",
+          onPress: () => console.log("Cancel Pressed"),
+          style: "cancel"
+        }
+      ]);
     } else {
-      cartStore.checkoutCart;
+      cartStore.checkoutCart();
     }
   };
 
