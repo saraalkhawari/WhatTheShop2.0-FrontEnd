@@ -10,6 +10,8 @@ class CartStore {
     if (itemExist) itemExist.quantity += item.quantity;
     else this.items.push(item);
     await AsyncStorage.setItem("cart", JSON.stringify(this.items));
+    const retrievedItems = await AsyncStorage.getItem("cart");
+    console.log("Async Storage...>>", retrievedItems);
   };
 
   retrieveItems = async () => {
@@ -53,4 +55,5 @@ decorate(CartStore, {
 });
 
 const cartStore = new CartStore();
+cartStore.retrieveItems();
 export default cartStore;
