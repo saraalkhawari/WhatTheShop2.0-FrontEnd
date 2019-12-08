@@ -11,6 +11,9 @@ class CartStore {
     if (itemExist) itemExist.quantity += item.quantity;
     else this.items.push(item);
     await AsyncStorage.setItem("cart", JSON.stringify(this.items));
+    {
+      // console.log("assync Storage >>", this.items);
+    }
   };
 
   retrieveItems = async () => {
@@ -26,8 +29,9 @@ class CartStore {
     }
   };
 
-  removeItemFromCart = item => {
-    this.items = this.items.filter(_item => _item !== item);
+  removeItemFromCart = async item => {
+    this.items = this.items.filter(_item => _item.name !== item.name);
+    await AsyncStorage.setItem("cart", JSON.stringify(this.items));
   };
 
   //   "cart_items": [
@@ -55,5 +59,4 @@ decorate(CartStore, {
 });
 
 const cartStore = new CartStore();
-cartStore.retrieveItems();
 export default cartStore;
