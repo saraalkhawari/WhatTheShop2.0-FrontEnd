@@ -1,8 +1,9 @@
 import React from "react";
 import { observer } from "mobx-react";
-
+import { Alert } from "react-native";
+import { withNavigation } from "react-navigation";
 // NativeBase Components
-import { Text, List, Button, Alert } from "native-base";
+import { Text, List, Button } from "native-base";
 
 // Component
 import CartItem from "./CartItem";
@@ -14,29 +15,28 @@ import LogButton from "../Buttons/LogButton";
 import cartStore from "../../stores/cartStore";
 import authStore from "../../stores/authStore";
 
-const CreatureCart = () => {
+const CreatureCart = ({ navigation }) => {
   const cartItems = cartStore.items.map(item => (
     <CartItem item={item} key={`${item.name}`} />
   ));
   const handleCheckout = () => {
-    if (authStore.user === null) {
-      return Alert.alert(
-        "HALT!",
-        "You will need to login to proceed. login now?",
+    if (authStore.user) cartStore.checkoutCart();
+    else {
+      Alert.alert(
+        "HALT! You're not logged in!",
+        "Log in to proceed.",
         [
           {
-            text: "OK",
-            onPress: ({ navigation }) => navigation.navigate("Login")
+            text: "Log in",
+            onPress: () => navigation.navigate("Login")
           },
           {
             text: "Cancel",
-            onPress: () => console.log("Cancel Pressed"),
             style: "cancel"
           }
-        ]
+        ],
+        { cancelable: true }
       );
-    } else {
-      cartStore.checkoutCart;
     }
   };
 
@@ -55,4 +55,4 @@ CreatureCart.navigationOptions = {
   title: "Cart"
 };
 
-export default observer(CreatureCart);
+export default withNavigation(observer(CreatureCart));
