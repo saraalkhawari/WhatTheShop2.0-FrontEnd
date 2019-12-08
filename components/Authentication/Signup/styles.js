@@ -24,7 +24,8 @@ const styles = StyleSheet.create({
   },
   authOther: {
     color: "rgb(20,90,100)",
-    marginTop: 15
+    marginTop: 15,
+    textAlign: "center"
   },
   authTextInput: {
     alignSelf: "stretch",

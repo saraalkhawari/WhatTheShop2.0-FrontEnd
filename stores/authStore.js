@@ -24,7 +24,6 @@ class AuthStore {
   signup = async (userData, navigation) => {
     try {
       await instance.post("register/", userData);
-      console.log("signed-up");
       this.login(userData, navigation);
     } catch (err) {
       console.error(err);
@@ -39,7 +38,6 @@ class AuthStore {
       const user = res.data;
       await this.setUser(user.access);
       navigation.navigate("ListScreen");
-      console.log("logged in");
     } catch (err) {
       console.error(err);
       console.log("something went wrong logging in");
