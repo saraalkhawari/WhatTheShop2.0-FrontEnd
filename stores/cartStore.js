@@ -4,6 +4,8 @@ import { AsyncStorage } from "react-native";
 
 class CartStore {
   items = [];
+  history = [];
+  loading = true;
 
   addItemToCart = async item => {
     const itemExist = this.items.find(_item => _item.name === item.name);
@@ -63,6 +65,27 @@ class CartStore {
     this.items.forEach(item => (quantity += item.quantity));
     return quantity;
   }
+
+  retrieveHistory = async () => {
+    const token = await AsyncStorage.getItem("myToken");
+    try {
+      let history = fetch("http://192.168.8.103/api/history/", {
+        method: "GET",
+        headers: {
+          Authorization: token
+        }
+      });
+      console.log("History>>>>", history[0]);
+      // const res = await instance.get("history/");
+      console.log("Retrieving History");
+
+      // const history = res.data;
+      this.history = history;
+      this.loading = false;
+    } catch (err) {
+      console.error(err);
+    }
+  };
 }
 
 decorate(CartStore, {
@@ -72,4 +95,5 @@ decorate(CartStore, {
 
 const cartStore = new CartStore();
 cartStore.retrieveItems();
+cartStore.retrieveHistory();
 export default cartStore;
