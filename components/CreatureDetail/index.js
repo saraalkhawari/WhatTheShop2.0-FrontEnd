@@ -31,7 +31,9 @@ class CreatureDetail extends Component {
   state = {
     name: this.props.navigation.getParam("creatureName"),
     option: "",
-    quantity: 1
+    quantity: 1,
+    creature: this.props.navigation.getParam("creatureID")
+
   };
 
   changeWig = value =>

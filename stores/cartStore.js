@@ -1,28 +1,24 @@
 import { computed, decorate, observable } from "mobx";
-
+import { instance } from "./instance";
 import { AsyncStorage } from "react-native";
 
 class CartStore {
   items = [];
+  history = [];
+  loading = true;
 
   addItemToCart = async item => {
-    console.log("item", item);
     const itemExist = this.items.find(_item => _item.name === item.name);
     if (itemExist) itemExist.quantity += item.quantity;
     else this.items.push(item);
     await AsyncStorage.setItem("cart", JSON.stringify(this.items));
-    {
-      // console.log("assync Storage >>", this.items);
-    }
   };
 
   retrieveItems = async () => {
     try {
       const retrievedItems = await AsyncStorage.getItem("cart");
       if (retrievedItems) {
-        console.log("items>>", this.items);
         this.items = JSON.parse(retrievedItems);
-        console.log("items 2>>", this.items);
       }
     } catch (error) {
       console.log(error.message);
@@ -34,23 +30,62 @@ class CartStore {
     await AsyncStorage.setItem("cart", JSON.stringify(this.items));
   };
 
+  // Backend format >>>>>>>>
   //   "cart_items": [
   //     {
   //         "creature": 1,
   //         "quantity": 66
   //     }
   // ]
+  //>>>>>>>>>>>>>>>>>>>>>>>>
 
-  checkoutCart = () => {
-    this.items = [];
-    alert("I'm a cute message");
+  checkoutCart = async () => {
+    try {
+      if (this.items.length > 0) {
+        let cart = [];
+        this.items.forEach(obj =>
+          cart.push({ creature: obj.creature, quantity: obj.quantity })
+        );
+
+        let obj = { cart_items: cart };
+        console.log("cart >>", obj);
+        await instance.post("checkout/", obj);
+        this.items = [];
+        await AsyncStorage.setItem("cart", JSON.stringify(this.items));
+        alert("the cart is in the BackEnd FINALLLLLY !!!!");
+      } else alert("There's No ITEMS !!!");
+    } catch (err) {
+      console.error(err);
+      console.log("something went wrong");
+    }
   };
 
   get quantity() {
     let quantity = 0;
-    this.items.forEach(item => (quantity += item.quatity));
+    this.items.forEach(item => (quantity += item.quantity));
     return quantity;
   }
+
+  retrieveHistory = async () => {
+    const token = await AsyncStorage.getItem("myToken");
+    try {
+      let history = fetch("http://192.168.8.103/api/history/", {
+        method: "GET",
+        headers: {
+          Authorization: token
+        }
+      });
+      console.log("History>>>>", history[0]);
+      // const res = await instance.get("history/");
+      console.log("Retrieving History");
+
+      // const history = res.data;
+      this.history = history;
+      this.loading = false;
+    } catch (err) {
+      console.error(err);
+    }
+  };
 }
 
 decorate(CartStore, {
@@ -60,4 +95,5 @@ decorate(CartStore, {
 
 const cartStore = new CartStore();
 cartStore.retrieveItems();
+cartStore.retrieveHistory();
 export default cartStore;
