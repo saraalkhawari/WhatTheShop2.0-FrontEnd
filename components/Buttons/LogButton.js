@@ -10,13 +10,13 @@ import authStore from "../../stores/authStore";
 const Log = ({ navigation }) => {
   if (authStore.user === null) {
     return (
-      <Button Success onPress={() => navigation.navigate("Login")}>
+      <Button transparent Success onPress={() => navigation.navigate("Login")}>
         <Text>Login</Text>
       </Button>
     );
   } else {
     return (
-      <Button danger onPress={authStore.logout}>
+      <Button transparent Danger onPress={authStore.logout}>
         <Text>Logout</Text>
       </Button>
     );
