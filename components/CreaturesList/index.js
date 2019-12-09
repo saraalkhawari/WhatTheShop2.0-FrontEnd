@@ -32,11 +32,10 @@ const CreatureList = () => {
     </>
   );
 };
-
+<LogButton />;
 CreatureList.navigationOptions = {
   title: "Creature List",
-  headerRight: <CartButton />,
-  headerLeft: <LogButton />
+  headerRight: <CartButton />
 };
 
 export default observer(CreatureList);
