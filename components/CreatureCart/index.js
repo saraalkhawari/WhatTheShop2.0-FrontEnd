@@ -1,8 +1,9 @@
 import React from "react";
 import { observer } from "mobx-react";
-
+import { Alert } from "react-native";
+import { withNavigation } from "react-navigation";
 // NativeBase Components
-import { Text, List, Button, Alert } from "native-base";
+import { Text, List, Button } from "native-base";
 
 // Component
 import CartItem from "./CartItem";
@@ -14,7 +15,7 @@ import LogButton from "../Buttons/LogButton";
 import cartStore from "../../stores/cartStore";
 import authStore from "../../stores/authStore";
 
-const CreatureCart = () => {
+const CreatureCart = ({ navigation }) => {
   const cartItems = cartStore.items.map(item => (
     <CartItem item={item} key={`${item.name}`} />
   ));
@@ -33,6 +34,7 @@ const CreatureCart = () => {
       ]);
     } else {
       cartStore.checkoutCart();
+
     }
   };
 
@@ -51,4 +53,4 @@ CreatureCart.navigationOptions = {
   title: "Cart"
 };
 
-export default observer(CreatureCart);
+export default withNavigation(observer(CreatureCart));
