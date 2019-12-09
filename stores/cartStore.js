@@ -59,4 +59,5 @@ decorate(CartStore, {
 });
 
 const cartStore = new CartStore();
+cartStore.retrieveItems();
 export default cartStore;
