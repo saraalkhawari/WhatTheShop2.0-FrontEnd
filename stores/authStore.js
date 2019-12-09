@@ -38,7 +38,6 @@ class AuthStore {
       const res = await instance.post("login/", userData);
       const user = res.data;
       await this.setUser(user.access);
-      console.log("USERName", this.username);
       this.username = userData.username;
       console.log("USERName", this.username);
       navigation.navigate("ListScreen");

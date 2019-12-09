@@ -67,19 +67,9 @@ class CartStore {
   }
 
   retrieveHistory = async () => {
-    const token = await AsyncStorage.getItem("myToken");
     try {
-      let history = fetch("http://192.168.8.103/api/history/", {
-        method: "GET",
-        headers: {
-          Authorization: token
-        }
-      });
-      console.log("History>>>>", history[0]);
-      // const res = await instance.get("history/");
-      console.log("Retrieving History");
-
-      // const history = res.data;
+      const res = await instance.get("history/");
+      const history = res.data;
       this.history = history;
       this.loading = false;
     } catch (err) {
@@ -90,10 +80,10 @@ class CartStore {
 
 decorate(CartStore, {
   items: observable,
+  history: observable,
   quantity: computed
 });
 
 const cartStore = new CartStore();
 cartStore.retrieveItems();
-cartStore.retrieveHistory();
 export default cartStore;

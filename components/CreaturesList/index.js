@@ -14,7 +14,8 @@ import CreatureItem from "./CreatureItem";
 //Buttons
 import CartButton from "../Buttons/CartButton";
 import LogButton from "../Buttons/LogButton";
-import Profile from "../Buttons/ProfileButton";
+
+import ProfileButton from "../Buttons/ProfileButton";
 
 const CreatureList = () => {
   if (creatureStore.loading) return <Spinner />;
@@ -25,7 +26,8 @@ const CreatureList = () => {
     <>
       <Content>
         <List>{creaturesList}</List>
-        <Profile />
+
+        <ProfileButton />
       </Content>
     </>
   );
