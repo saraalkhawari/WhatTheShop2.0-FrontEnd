@@ -30,16 +30,22 @@ import cartStore from "../../stores/cartStore";
 class CreatureDetail extends Component {
   state = {
     name: this.props.navigation.getParam("creatureName"),
+    option: "",
     quantity: 1,
     creature: this.props.navigation.getParam("creatureID")
+
   };
 
-  // changeWig = value =>
-  //   this.setState({
-  //     wig: value
-  //   });
+  changeWig = value =>
+    this.setState({
+      wig: value
+    });
 
-  // changeWig = value => this.setState({ wig: value });
+  changeWig = value => this.setState({ wig: value });
+
+  changeOption = value => {
+    this.setState({ option: value });
+  };
 
   changeQuantity = value => this.setState({ quantity: value });
 
@@ -68,6 +74,24 @@ class CreatureDetail extends Component {
                 <Thumbnail source={{ uri: creature.image }} />
               </Right>
             </CardItem>
+
+            <Body>
+              <Picker
+                note
+                mode="dropdown"
+                style={styles.picker}
+                onValueChange={this.changeOption}
+                selectedValue={this.state.option}
+                placeholder="Choose Option"
+              >
+                <Picker.Item label="No Wig" value="NOWIG" />
+                <Picker.Item label="Green" value="Green" />
+                <Picker.Item label="Blue" value="Blue" />
+                <Picker.Item label="Purple" value="Purple" />
+                <Picker.Item label="Red" value="Red" />
+                <Picker.Item label="Yellow" value="Yellow" />
+              </Picker>
+            </Body>
 
             <CardItem>
               <Body style={styles.numericInput}>
