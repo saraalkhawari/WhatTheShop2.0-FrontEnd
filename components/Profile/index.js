@@ -1,4 +1,5 @@
 import React from "react";
+import { observer } from "mobx-react";
 
 // NativeBase Components
 import { Container, CardItem, Text } from "native-base";
@@ -10,6 +11,7 @@ import authStore from "../../stores/authStore";
 //Buttons
 import CartButton from "../Buttons/CartButton";
 import LogButton from "../Buttons/LogButton";
+import HistoryButton from "../Buttons/HistoryButton";
 
 const Profile = () => {
   return (
@@ -22,6 +24,7 @@ const Profile = () => {
         activeOpacity={0.1}
       />
       {console.log("user>>", authStore.user.username)}
+      <HistoryButton />
       <LogButton />
     </Container>
   );
@@ -30,4 +33,4 @@ const Profile = () => {
 Profile.navigationOptions = {
   headerRight: <CartButton />
 };
-export default Profile;
+export default observer(Profile);
