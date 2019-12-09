@@ -19,13 +19,15 @@ import {
 //Store
 import authStore from "../../stores/cartStore";
 import dummy from "../../stores/dummyHistory";
+import cartStore from "../../stores/cartStore";
 
 //Buttons
 import CartButton from "../Buttons/CartButton";
 import HistoryItem from "./HistoryItem";
 
 const History = () => {
-  const list = dummy.map(item => <HistoryItem item={item} key={item.id} />);
+  const history = cartStore.history;
+  const list = history.map(item => <HistoryItem item={item} key={item.id} />);
 
   return (
     <Container>
