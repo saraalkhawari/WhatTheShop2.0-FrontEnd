@@ -33,6 +33,9 @@ class CreatureDetail extends Component {
     wig: "",
     quantity: 1,
     image: null
+    option: "",
+    creature: this.props.navigation.getParam("creatureID")
+
   };
 
   changeWig = value => {

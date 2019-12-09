@@ -5,6 +5,7 @@ import { instance } from "./instance";
 
 class AuthStore {
   user = null;
+  username = "bla bla bla";
 
   setUser = async token => {
     if (token) {
@@ -37,6 +38,8 @@ class AuthStore {
       const res = await instance.post("login/", userData);
       const user = res.data;
       await this.setUser(user.access);
+      this.username = userData.username;
+      console.log("USERName", this.username);
       navigation.navigate("ListScreen");
     } catch (err) {
       console.error(err);
@@ -68,7 +71,8 @@ class AuthStore {
 }
 
 decorate(AuthStore, {
-  user: observable
+  user: observable,
+  username: observable
 });
 
 const authStore = new AuthStore();
