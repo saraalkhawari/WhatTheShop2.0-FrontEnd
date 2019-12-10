@@ -36,7 +36,6 @@ const CreatureList = () => {
     </>
   );
 };
-<LogButton />;
 CreatureList.navigationOptions = {
   title: "Creatures List",
   headerRight: <CartButton />,
@@ -48,8 +47,6 @@ CreatureList.navigationOptions = {
     shadowOffset: { width: 1, height: 1 },
     shadowOpacity: 0.9
   }
-
-
 };
 
 export default observer(CreatureList);

@@ -11,7 +11,6 @@ import cartStore from "../../stores/cartStore";
 
 //Buttons
 import CartButton from "../Buttons/CartButton";
-import LogButton from "../Buttons/LogButton";
 import HistoryButton from "../Buttons/HistoryButton";
 
 class Profile extends Component {

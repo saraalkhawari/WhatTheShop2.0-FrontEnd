@@ -11,10 +11,13 @@ import {
   CardItem,
   Container,
   Content,
+  Header,
   Left,
   Picker,
   Right,
-  Text
+  Text,
+  Title,
+  Icon
 } from "native-base";
 
 // Style
@@ -22,7 +25,6 @@ import styles from "./styles";
 
 // Buttons
 import CartButton from "../Buttons/CartButton";
-import LogButton from "../Buttons/LogButton";
 
 // //Stores
 import creaturesStore from "../../stores/creatureStore";
@@ -33,20 +35,21 @@ class CreatureDetail extends Component {
     name: this.props.navigation.getParam("creatureName"),
     wig: "",
     quantity: 1,
-    image: null
+    image: null,
     option: "",
     creature: this.props.navigation.getParam("creatureID")
   };
 
   changeWig = value => {
     this.setState({ wig: value });
-    const creatureID = this.props.navigation.getParam("creatureID");
-    const creatureWig = creaturesStore.creatureWigs.find(
-      creatureWig =>
-        +creatureID === +creatureWig.creature && +value === +creatureWig.wig
-    );
-    console.log("hehee", creatureWig);
-    this.setState({ image: creatureWig.image });
+    if (value != 0) {
+      const creatureID = this.props.navigation.getParam("creatureID");
+      const creatureWig = creaturesStore.creatureWigs.find(
+        creatureWig =>
+          +creatureID === +creatureWig.creature && +value === +creatureWig.wig
+      );
+      this.setState({ image: creatureWig.image });
+    } else this.setState({ image: null });
   };
 
   changeQuantity = value => this.setState({ quantity: value });
@@ -66,27 +69,31 @@ class CreatureDetail extends Component {
           <Card transparent style={styles.card}>
             <CardItem>
               <Image
-                source={{ uri: creature.image }}
-                style={{ height: 500, width: null, flex: 1 }}
+                source={{
+                  uri: this.state.image ? this.state.image : creature.image
+                }}
+                style={{ height: 400, width: 400, flex: 1 }}
               />
             </CardItem>
             <CardItem>
-              <Left>
-                <Button rounded dark>
-                  <Text>{`         ${creature.name}                 `}</Text>
-                </Button>
-                <Text note>{creature.origin}</Text>
-              </Left>
-              <Body />
-
-              <Right>
+              {/* <Right>
                 <Thumbnail
                   source={{
                     uri: this.state.image ? this.state.image : creature.image
                   }}
                 />
-              </Right>
+              </Right> */}
+            </CardItem>
+            <CardItem>
+              <Left>
+                <Button rounded dark>
+                  <Text>{creature.name}</Text>
+                </Button>
+                <Text note>{creature.origin}</Text>
+              </Left>
+              <Body />
 
+              <Right></Right>
             </CardItem>
             <CardItem>
               <Text note style={{ color: "gray" }}>
@@ -97,13 +104,32 @@ class CreatureDetail extends Component {
             <Body>
               <Picker
                 note
+                renderHeader={backAction => (
+                  <Header>
+                    <Left>
+                      <Button transparent onPress={backAction}>
+                        <Icon name="arrow-back" style={{ color: "black" }} />
+                      </Button>
+                    </Left>
+                    <Body style={{ flex: 3 }}>
+                      <Title style={{ color: "black" }}>Wig Colors</Title>
+                    </Body>
+                    <Right />
+                  </Header>
+                )}
                 mode="dropdown"
                 style={styles.picker}
+                iosIcon={
+                  <Icon
+                    name="arrow-dropdown-circle"
+                    style={{ color: "black", fontSize: 25 }}
+                  />
+                }
                 onValueChange={this.changeWig}
                 selectedValue={this.state.wig}
-                placeholder="Choose Option"
+                placeholder="Wig Options ..."
               >
-                <Picker.Item label="No Wig" value="NOWIG" />
+                <Picker.Item label="No Wig" value="0" />
                 <Picker.Item label="Blue" value="1" />
                 <Picker.Item label="Red" value="2" />
                 <Picker.Item label="Yellow" value="3" />
