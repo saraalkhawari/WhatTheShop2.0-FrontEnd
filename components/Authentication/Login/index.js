@@ -10,6 +10,7 @@ import authStore from "../../../stores/authStore";
 //Styling components
 import styles from "../Signup/styles";
 import { TextInput, TouchableOpacity, View } from "react-native";
+import FooterComp from "../../FooterComp";
 
 class Login extends Component {
   state = {
@@ -22,34 +23,37 @@ class Login extends Component {
 
   render() {
     return (
-      <View style={styles.authContainer}>
-        <Form>
-          <Item>
-            <Input
-              placeholder="Username"
-              autoCapitalize="none"
-              onChangeText={username => this.setState({ username })}
-            />
-          </Item>
-          <Item last>
-            <Input
-              placeholder="Password"
-              autoCapitalize="none"
-              secureTextEntry={true}
-              onChangeText={password => this.setState({ password })}
-            />
-          </Item>
-          <Button rounded dark onPress={this.handlePress}>
-            <Text>{`                   Login`}</Text>
-          </Button>
-          <Text
-            style={styles.authOther}
-            onPress={() => this.props.navigation.navigate("Signup")}
-          >
-            Not a User? Click here to register!
-          </Text>
-        </Form>
-      </View>
+      <>
+        <View style={styles.authContainer}>
+          <Form>
+            <Item>
+              <Input
+                placeholder="Username"
+                autoCapitalize="none"
+                onChangeText={username => this.setState({ username })}
+              />
+            </Item>
+            <Item last>
+              <Input
+                placeholder="Password"
+                autoCapitalize="none"
+                secureTextEntry={true}
+                onChangeText={password => this.setState({ password })}
+              />
+            </Item>
+            <Button rounded dark onPress={this.handlePress}>
+              <Text>{`                   Login`}</Text>
+            </Button>
+            <Text
+              style={styles.authOther}
+              onPress={() => this.props.navigation.navigate("Signup")}
+            >
+              Not a User? Click here to register!
+            </Text>
+          </Form>
+        </View>
+        <FooterComp />
+      </>
     );
   }
 }
