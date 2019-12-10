@@ -31,20 +31,22 @@ import cartStore from "../../stores/cartStore";
 class CreatureDetail extends Component {
   state = {
     name: this.props.navigation.getParam("creatureName"),
-    option: "",
+    wig: "",
     quantity: 1,
+    image: null
+    option: "",
     creature: this.props.navigation.getParam("creatureID")
   };
 
-  changeWig = value =>
-    this.setState({
-      wig: value
-    });
-
-  changeWig = value => this.setState({ wig: value });
-
-  changeOption = value => {
-    this.setState({ option: value });
+  changeWig = value => {
+    this.setState({ wig: value });
+    const creatureID = this.props.navigation.getParam("creatureID");
+    const creatureWig = creaturesStore.creatureWigs.find(
+      creatureWig =>
+        +creatureID === +creatureWig.creature && +value === +creatureWig.wig
+    );
+    console.log("hehee", creatureWig);
+    this.setState({ image: creatureWig.image });
   };
 
   changeQuantity = value => this.setState({ quantity: value });
@@ -76,6 +78,15 @@ class CreatureDetail extends Component {
                 <Text note>{creature.origin}</Text>
               </Left>
               <Body />
+
+              <Right>
+                <Thumbnail
+                  source={{
+                    uri: this.state.image ? this.state.image : creature.image
+                  }}
+                />
+              </Right>
+
             </CardItem>
             <CardItem>
               <Text note style={{ color: "gray" }}>
@@ -88,16 +99,16 @@ class CreatureDetail extends Component {
                 note
                 mode="dropdown"
                 style={styles.picker}
-                onValueChange={this.changeOption}
-                selectedValue={this.state.option}
+                onValueChange={this.changeWig}
+                selectedValue={this.state.wig}
                 placeholder="Choose Option"
               >
                 <Picker.Item label="No Wig" value="NOWIG" />
-                <Picker.Item label="Green" value="Green" />
-                <Picker.Item label="Blue" value="Blue" />
-                <Picker.Item label="Purple" value="Purple" />
-                <Picker.Item label="Red" value="Red" />
-                <Picker.Item label="Yellow" value="Yellow" />
+                <Picker.Item label="Blue" value="1" />
+                <Picker.Item label="Red" value="2" />
+                <Picker.Item label="Yellow" value="3" />
+                <Picker.Item label="Green" value="4" />
+                <Picker.Item label="Purple" value="5" />
               </Picker>
             </Body>
             <CardItem>
