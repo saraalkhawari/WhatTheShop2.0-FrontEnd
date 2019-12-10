@@ -18,6 +18,7 @@ const HomePage = ({ navigation }) => {
               <Button
                 rounded
                 dark
+                style={{ alignItems: "center" }}
                 onPress={() => navigation.navigate("StackNav")}
               >
                 <Text>get started !</Text>

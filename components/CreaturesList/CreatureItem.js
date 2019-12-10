@@ -1,5 +1,6 @@
 import React from "react";
 import { withNavigation } from "react-navigation";
+import { Image } from "react-native";
 // NativeBase Components
 import {
   Container,
@@ -12,7 +13,9 @@ import {
   Left,
   Body,
   Right,
-  Button
+  Button,
+  CardItem,
+  Card
 } from "native-base";
 
 // Style
@@ -35,23 +38,54 @@ const CreatureItem = ({ creature, navigation }) => {
   // cartStore.addItemToCart((name: creature.name), (quantity: 1));
 
   return (
-    <ListItem thumbnail onPress={handlePress}>
-      <Left>
-        <Thumbnail source={{ uri: creature.image }} />
-      </Left>
-      <Body>
-        <Text>{creature.name}</Text>
-        <Text note numberOfLines={1}>
-          {creature.description}
-        </Text>
-      </Body>
-      {/* <Button full onPress={this.handleAdd}>
-        <Text>Add</Text>
-      </Button> */}
-      <Right>
-        <Text>{creature.price}</Text>
-      </Right>
-    </ListItem>
+    <Content>
+      <Card>
+        <CardItem>
+          <Body>
+            <Button rounded dark>
+              <Text>{`            ${creature.name}            `} </Text>
+            </Button>
+          </Body>
+          <Right>
+            <Button rounded bordered dark onPress={handlePress}>
+              <Text>View ></Text>
+            </Button>
+          </Right>
+        </CardItem>
+        <CardItem>
+          <Image
+            source={{ uri: creature.image }}
+            style={{ height: 200, width: null, flex: 1 }}
+          />
+        </CardItem>
+        <CardItem style={{ backgroundColor: "black" }}>
+          <Left>
+            <Text style={{ color: "white" }} numberOfLines={1}>
+              {" "}
+              {creature.description}
+            </Text>
+          </Left>
+          <Right>
+            <Text style={{ color: "white" }}>{creature.price} $</Text>
+          </Right>
+        </CardItem>
+      </Card>
+    </Content>
+
+    // {/* <ListItem thumbnail onPress={handlePress}>
+    //   <Left>
+    //     <Thumbnail source={{ uri: creature.image }} />
+    //   </Left>
+    //   <Body>
+    //     <Text>{creature.name}</Text>
+    //     <Text note numberOfLines={1}>
+    //       {creature.description}
+    //     </Text>
+    //   </Body>
+    //   <Right>
+    //     <Text>{creature.price} $</Text>
+    //   </Right>
+    // </ListItem> */}
   );
 };
 

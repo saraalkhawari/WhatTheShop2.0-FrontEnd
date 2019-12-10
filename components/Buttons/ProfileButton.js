@@ -2,7 +2,7 @@ import React from "react";
 import { observer } from "mobx-react";
 import { withNavigation } from "react-navigation";
 
-import { Button, Text } from "native-base";
+import { Button, Icon } from "native-base";
 
 // Stores
 import authStore from "../../stores/authStore";
@@ -10,8 +10,12 @@ import authStore from "../../stores/authStore";
 const Profile = ({ navigation }) => {
   if (authStore.user !== null) {
     return (
-      <Button Success onPress={() => navigation.navigate("Profile")}>
-        <Text>Profile</Text>
+      <Button rounded dark onPress={() => navigation.navigate("Profile")}>
+        <Icon
+          name="user-circle"
+          type="FontAwesome"
+          style={{ color: "white" }}
+        />
       </Button>
     );
   }
