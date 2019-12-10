@@ -13,7 +13,7 @@ const HistoryItem = ({ item }) => {
   }));
   let items_display = items.map(obj => (
     <>
-      <ListItem>
+      <ListItem key={`${obj.creature.name} ${obj.quantity}`}>
         <Left>
           <Thumbnail source={{ uri: obj.creature.image }} />
         </Left>

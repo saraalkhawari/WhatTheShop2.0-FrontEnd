@@ -27,7 +27,9 @@ import HistoryItem from "./HistoryItem";
 
 const History = () => {
   const history = cartStore.history;
-  const list = history.map(item => <HistoryItem item={item} key={item.id} />);
+  const list = history.map((item, idx) => (
+    <HistoryItem item={item} key={idx} />
+  ));
 
   return (
     <Container>

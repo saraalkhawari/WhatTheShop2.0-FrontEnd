@@ -10,7 +10,6 @@ import CartItem from "./CartItem";
 import FooterComp from "../FooterComp";
 
 //Buttons
-import LogButton from "../Buttons/LogButton";
 
 // Stores
 import cartStore from "../../stores/cartStore";
