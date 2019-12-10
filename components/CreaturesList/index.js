@@ -38,8 +38,16 @@ const CreatureList = () => {
 };
 
 CreatureList.navigationOptions = {
-  title: "Creature List",
-  headerRight: <CartButton />
+  title: "Creatures List",
+  headerRight: <CartButton />,
+  headerTintColor: "gray",
+  headerTitleStyle: {
+    color: "white",
+    fontWeight: "bold",
+    shadowColor: "#000",
+    shadowOffset: { width: 1, height: 1 },
+    shadowOpacity: 0.9
+  }
 };
 
 export default observer(CreatureList);

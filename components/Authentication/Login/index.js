@@ -40,7 +40,7 @@ class Login extends Component {
             />
           </Item>
           <Button rounded dark onPress={this.handlePress}>
-            <Text>Login</Text>
+            <Text>{`                   Login`}</Text>
           </Button>
           <Text
             style={styles.authOther}

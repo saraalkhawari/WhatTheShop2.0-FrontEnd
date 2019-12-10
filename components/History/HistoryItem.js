@@ -31,15 +31,15 @@ const HistoryItem = ({ item }) => {
       <ListItem itemDivider>
         <Text>Date : {item.date}</Text>
       </ListItem>
-      <ListItem itemDivider>
+      <ListItem itemDivider style={{ backgroundColor: "black" }}>
         <Left>
-          <Text>creature</Text>
+          <Text style={{ color: "white" }}>creature</Text>
         </Left>
         <Body>
-          <Text>N</Text>
+          <Text style={{ color: "white" }}>Name</Text>
         </Body>
         <Right>
-          <Text>Q</Text>
+          <Text style={{ color: "white" }}>Qant.</Text>
         </Right>
       </ListItem>
       {items_display}

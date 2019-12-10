@@ -14,14 +14,15 @@ const HomePage = ({ navigation }) => {
             style={{ flex: 1 }}
             source={require("../../assets/bg.png")}
           >
-            <Content style={{ position: "absolute", bottom: 90 }}>
+            <Content
+              style={{ alignSelf: "center", position: "absolute", bottom: 130 }}
+            >
               <Button
                 rounded
                 dark
-                style={{ alignItems: "center" }}
                 onPress={() => navigation.navigate("StackNav")}
               >
-                <Text>get started !</Text>
+                <Text>{`  get started !`}</Text>
               </Button>
             </Content>
           </ImageBackground>
@@ -36,7 +37,9 @@ const HomePage = ({ navigation }) => {
             style={{ flex: 1 }}
             source={require("../../assets/bg.png")}
           >
-            <Content style={{ position: "absolute", bottom: 90 }}>
+            <Content
+              style={{ alignSelf: "center", position: "absolute", bottom: 120 }}
+            >
               <Button transparent onPress={() => navigation.navigate("Login")}>
                 <Text style={{ color: "gray" }}>login / register</Text>
               </Button>
@@ -45,7 +48,7 @@ const HomePage = ({ navigation }) => {
                 dark
                 onPress={() => navigation.navigate("StackNav")}
               >
-                <Text>get started !</Text>
+                <Text>{`  get started !`}</Text>
               </Button>
             </Content>
           </ImageBackground>

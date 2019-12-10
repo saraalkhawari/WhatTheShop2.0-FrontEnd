@@ -41,7 +41,7 @@ class Signup extends Component {
             />
           </Item>
           <Button rounded dark onPress={this.handlePress}>
-            <Text>Signup</Text>
+            <Text>{`                   Signup`}</Text>
           </Button>
           <Text
             style={styles.authOther}

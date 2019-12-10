@@ -16,8 +16,8 @@ import {
 class FooterComp extends Component {
   render() {
     return (
-      <Footer style={{ backgroundColor: "white" }}>
-        <LogButton />
+      <Footer style={{ backgroundColor: "white", height: 60 }}>
+        <LogButton style={{ paddingTop: 10 }} />
         <FooterTab></FooterTab>
         <ProfileButton />
         <FooterTab></FooterTab>

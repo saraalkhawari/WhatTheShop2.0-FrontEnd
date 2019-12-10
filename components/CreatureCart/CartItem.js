@@ -13,15 +13,19 @@ const CartItem = ({ item }) => {
   return (
     <ListItem style={styles.listStyle}>
       <Left>
-        <Text style={styles.name}> {item.name} </Text>
+        <Button transparent onPress={() => cartStore.removeItemFromCart(item)}>
+          <Icon
+            name="trash-can"
+            type="MaterialCommunityIcons"
+            style={styles.removeItem}
+          />
+        </Button>
       </Left>
       <Body>
-        <Text style={styles.quantity}>{item.quantity}</Text>
+        <Text style={styles.name}> {item.name} </Text>
       </Body>
       <Right>
-        <Button transparent onPress={() => cartStore.removeItemFromCart(item)}>
-          <Icon name="trash" style={styles.removeItem} />
-        </Button>
+        <Text style={styles.quantity}>{item.quantity}</Text>
       </Right>
     </ListItem>
   );
