@@ -5,7 +5,7 @@ import { instance } from "./instance";
 
 class AuthStore {
   user = null;
-  username = "bla bla bla";
+  username = "Beautiful*";
 
   setUser = async token => {
     if (token) {

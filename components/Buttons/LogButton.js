@@ -2,7 +2,7 @@ import React from "react";
 import { observer } from "mobx-react";
 import { withNavigation } from "react-navigation";
 
-import { Button, Text } from "native-base";
+import { Button, Icon, Text } from "native-base";
 
 // Stores
 import authStore from "../../stores/authStore";
@@ -10,13 +10,23 @@ import authStore from "../../stores/authStore";
 const Log = ({ navigation }) => {
   if (authStore.user === null) {
     return (
-      <Button transparent Success onPress={() => navigation.navigate("Login")}>
-        <Text>Login</Text>
+      <Button rounded dark onPress={() => navigation.navigate("Login")}>
+        <Icon
+          name="login"
+          type="MaterialCommunityIcons"
+          style={{ color: "white" }}
+        />
+        <Text>Login </Text>
       </Button>
     );
   } else {
     return (
-      <Button transparent Danger onPress={authStore.logout}>
+      <Button rounded danger onPress={authStore.logout}>
+        <Icon
+          name="logout"
+          type="MaterialCommunityIcons"
+          style={{ color: "white" }}
+        />
         <Text>Logout</Text>
       </Button>
     );

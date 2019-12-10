@@ -39,6 +39,14 @@ const History = () => {
 };
 
 History.navigationOptions = {
-  headerRight: <CartButton />
+  headerRight: <CartButton />,
+  headerTintColor: "gray",
+  headerTitleStyle: {
+    color: "white",
+    fontWeight: "bold",
+    shadowColor: "#000",
+    shadowOffset: { width: 1, height: 1 },
+    shadowOpacity: 0.9
+  }
 };
 export default observer(History);

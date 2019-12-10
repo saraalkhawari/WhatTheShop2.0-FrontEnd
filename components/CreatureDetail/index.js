@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import NumericInput from "react-native-numeric-input";
+import FooterComp from "../FooterComp";
 
 // NativeBase Components
+import { Image } from "react-native";
 import {
   Body,
   Button,
@@ -9,7 +11,6 @@ import {
   CardItem,
   Container,
   Content,
-  Thumbnail,
   Left,
   Picker,
   Right,
@@ -35,7 +36,6 @@ class CreatureDetail extends Component {
     image: null
     option: "",
     creature: this.props.navigation.getParam("creatureID")
-
   };
 
   changeWig = value => {
@@ -65,13 +65,20 @@ class CreatureDetail extends Component {
         <Content>
           <Card transparent style={styles.card}>
             <CardItem>
+              <Image
+                source={{ uri: creature.image }}
+                style={{ height: 500, width: null, flex: 1 }}
+              />
+            </CardItem>
+            <CardItem>
               <Left>
-                <Text style={styles.text}>
-                  {creature.name + "\n"}
-                  <Text note>{creature.origin}</Text>
-                </Text>
+                <Button rounded dark>
+                  <Text>{`         ${creature.name}                 `}</Text>
+                </Button>
+                <Text note>{creature.origin}</Text>
               </Left>
               <Body />
+
               <Right>
                 <Thumbnail
                   source={{
@@ -79,8 +86,14 @@ class CreatureDetail extends Component {
                   }}
                 />
               </Right>
-            </CardItem>
 
+            </CardItem>
+            <CardItem>
+              <Text note style={{ color: "gray" }}>
+                Description :
+              </Text>
+              <Text> {creature.description} </Text>
+            </CardItem>
             <Body>
               <Picker
                 note
@@ -98,8 +111,8 @@ class CreatureDetail extends Component {
                 <Picker.Item label="Purple" value="5" />
               </Picker>
             </Body>
-
             <CardItem>
+              <Text></Text>
               <Body style={styles.numericInput}>
                 <NumericInput
                   value={this.state.value}
@@ -107,16 +120,15 @@ class CreatureDetail extends Component {
                   initValue={1}
                 />
               </Body>
-
               <Right>
-                <Button full onPress={this.handleAdd}>
-                  <Text>Add</Text>
+                <Button rounded dark onPress={this.handleAdd}>
+                  <Text>{`           Add            `}</Text>
                 </Button>
               </Right>
             </CardItem>
-            <LogButton />
           </Card>
         </Content>
+        <FooterComp />
       </Container>
     );
   }
@@ -124,7 +136,15 @@ class CreatureDetail extends Component {
 
 CreatureDetail.navigationOptions = ({ navigation }) => ({
   title: navigation.getParam("creatureName"),
-  headerRight: <CartButton />
+  headerRight: <CartButton />,
+  headerTintColor: "gray",
+  headerTitleStyle: {
+    color: "white",
+    fontWeight: "bold",
+    shadowColor: "#000",
+    shadowOffset: { width: 1, height: 1 },
+    shadowOpacity: 0.9
+  }
 });
 
 export default CreatureDetail;
