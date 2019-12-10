@@ -33,7 +33,7 @@ class CreatureDetail extends Component {
     name: this.props.navigation.getParam("creatureName"),
     wig: "",
     quantity: 1,
-    image: null
+    image: null,
     option: "",
     creature: this.props.navigation.getParam("creatureID")
   };
@@ -86,7 +86,6 @@ class CreatureDetail extends Component {
                   }}
                 />
               </Right>
-
             </CardItem>
             <CardItem>
               <Text note style={{ color: "gray" }}>
